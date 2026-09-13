@@ -1,6 +1,6 @@
 # TENDERWEIGHT verification
 
-Fresh checks on 2026-09-13, Windows, headless Chromium only. No visible browser was opened. Public repository exists but remains empty pending approval of the specific push; GitHub Pages is not yet deployed.
+Fresh checks on 2026-09-13, Windows, headless Chromium only. No visible browser was opened. Play at https://kkp8121-rgb.github.io/tenderweight/. Publication evidence for each revision is generated separately in ignored `artifacts/improvement-publication.json` after checking the deployed commit and asset hashes.
 
 ## Full play
 
@@ -46,4 +46,10 @@ Final file/subpath audio peaks were .00907/.01937 with mute measured at zero. Th
 
 Runtime: classic IIFE, bundled Three.js, procedural audio, relative CSS/art/favicon, no CDN or runtime npm dependencies. Original PNG, source, tools and tests are retained in Git but excluded from the itch.io ZIP. Node modules, reports, local usage helper and ZIP are ignored.
 
-After the approved push, enable main/root GitHub Pages and rerun browser checks with `TENDER_URL` set to the real published URL. Check the actual deployment rather than treating a configured URL as success.
+For deployment verification, use main/root GitHub Pages and rerun browser checks with `TENDER_URL` set to the real published URL. Check the actual deployment rather than treating a configured URL as success.
+
+## Placement feedback regression — 2026-09-13
+
+Headless touch-enabled focused input used a safe pointer-lock rejection shim. An actual occupied starter cell and an actual zero-budget cell each displayed a distinct rejection message; structure count and budget were unchanged after both attempts. Evidence: `artifacts/qa-tender-probe.json` and `artifacts/qa-after-budget-feedback.png`. The existing interaction pass also covered both 390×844 and 844×390 layouts.
+
+`artifacts/touch-build-390.png` is a historical baseline, not a fresh before capture.

@@ -16,6 +16,12 @@ async function setup(options = {}, launchOptions = {}) {
   page.on('requestfailed', request => failed.push([request.failure()?.errorText, request.url()]));
   page.on('request', request => requests.push(request.url()));
   await page.addInitScript(() => {
+    try {
+      Object.defineProperty(Element.prototype, 'requestPointerLock', {
+        configurable: true,
+        value: () => Promise.reject(new Error('Pointer Lock disabled in automated checks'))
+      });
+    } catch (_) {}
     const Native = window.AudioContext || window.webkitAudioContext;
     window.__audioEvidence = { contexts: [], sources: 0, peak: 0, energy: 0, samples: 0, frames: [] };
     let previous;
